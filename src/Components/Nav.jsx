@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import logo from "../assets/logo.jpeg";
 
 export default function NavBar({ onCreateJobClick }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -7,7 +8,7 @@ export default function NavBar({ onCreateJobClick }) {
   return (
     <nav className="max-w-[1040px] mx-auto my-6 bg-white rounded-full shadow-xl border border-gray-300 px-6 md:px-12 py-3 flex items-center justify-between relative">      <a href="/" className="flex items-center bg-white rounded-xl shadow-md p-2" aria-label="Homepage">
       <img
-        src="public/cybermind_works_logo.jpeg"
+        src={logo}
         alt="Logo"
         className="h-10 w-10 rounded-xl object-contain"
       />
