@@ -6,15 +6,16 @@ export default function NavBar({ onCreateJobClick }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="max-w-[1040px] mx-auto my-6 bg-white rounded-full shadow-xl border border-gray-300 px-6 md:px-12 py-3 flex items-center justify-between relative">      <a href="/" className="flex items-center bg-white rounded-xl shadow-md p-2" aria-label="Homepage">
-      <img
-        src={logo}
-        alt="Logo"
-        className="h-10 w-10 rounded-xl object-contain"
-      />
-    </a>
+    <nav className="max-w-[890px] mx-auto my-6 bg-white rounded-full shadow-xl border-1 border-gray-300 px-6 md:px-12 py-3 flex items-center justify-between relative">
+      <a href="/" className="flex items-center bg-white rounded-xl shadow-md p-2" aria-label="Homepage">
+        <img
+          src={logo}
+          alt="Logo"
+          className="h-10 w-10 rounded-xl object-contain"
+        />
+      </a>
 
-      <ul className="hidden md:flex gap-10 lg:gap-14 font-semibold text-gray-900 text-base tracking-wide">
+      <ul className="hidden md:flex gap-10 lg:gap-10 font-semibold text-gray-900 text-s tracking-wide">
         <li><a href="/" className="hover:text-purple-600 transition-colors">Home</a></li>
         <li><a href="#" className="hover:text-purple-600 transition-colors">Find Jobs</a></li>
         <li><a href="#" className="hover:text-purple-600 transition-colors">Find Talents</a></li>

@@ -30,7 +30,6 @@ const Filter = ({ setFilter }) => {
 
   return (
     <div className="flex flex-col px-10 md:flex-row text-[#686868] py-6 md:py-8 justify-between items-stretch md:items-center gap-6 md:gap-4">
-      {/* Search Input */}
       <div className="flex gap-4 w-full md:w-80 border-b md:border-b-0 md:border-r-2 border-[#EAEAEA] pb-2 md:pb-0 md:pr-4">
         <CiSearch className="h-6 w-6 md:h-7 md:w-7 font-semibold" />
         <input
@@ -44,13 +43,21 @@ const Filter = ({ setFilter }) => {
 
       <div className="flex gap-4 w-full md:w-80 border-b md:border-b-0 md:border-r-2 border-[#EAEAEA] pb-2 md:pb-0 md:pr-4">
         <CiLocationOn className="h-6 w-6 md:h-7 md:w-7 font-semibold" />
-        <input
-          type="text"
-          placeholder="Search by location"
+        <select
           value={searchLocation}
           onChange={(e) => setSearchLocation(e.target.value)}
-          className="border-none outline-none bg-transparent placeholder-gray-400 text-base w-full"
-        />
+          className="border-none outline-none bg-transparent text-base w-full"
+        >
+          <option value="">Preferred Location</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Coimbatore">Coimbatore</option>
+          <option value="Pune">Pune</option>
+          <option value="Mumbai">Mumbai</option>
+          <option value="Noida">Noida</option>
+          <option value="Gurgaon">Gurgaon</option>
+        </select>
       </div>
 
       <div className="flex gap-4 w-full md:w-80 border-b md:border-b-0 md:border-r-2 border-[#EAEAEA] pb-2 md:pb-0 md:pr-4">
@@ -60,7 +67,7 @@ const Filter = ({ setFilter }) => {
           onChange={(e) => setJobType(e.target.value)}
           className="border-none outline-none bg-transparent text-base w-full"
         >
-          <option value="">Select Job Type</option>
+          <option value="">Job Type</option>
           <option value="full time">Full Time</option>
           <option value="internship">Internship</option>
           <option value="part time">Part Time</option>
@@ -74,7 +81,6 @@ const Filter = ({ setFilter }) => {
             ₹{(values[0] / 1000).toFixed(0)}k - ₹{(values[1] / 1000).toFixed(0)}k
           </p>
         </div>
-
         <Range
           step={1000}
           min={min}
