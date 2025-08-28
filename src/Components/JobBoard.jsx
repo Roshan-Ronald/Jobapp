@@ -8,7 +8,6 @@ import Filter from "./Filter";
 const initialJobs = [
   {
     id: 1,
-    companyLogo: "/Amazon_icon.png",
     company: "Amazon",
     jobTitle: "Full Stack Developer",
     postedAgo: "24h Ago",
@@ -84,7 +83,7 @@ export default function JobBoard() {
                 <X size={20} />
               </button>
               <div className="flex items-center justify-between mb-2">
-                <img src={job.companyLogo} alt={`${job.company} logo`} className="h-14 w-14 rounded-xl bg-gray-100 object-contain" />
+                <img src="/logo.jpeg" alt="Company logo" className="h-14 w-14 rounded-xl bg-gray-100 object-contain" />
                 <span className="text-xs font-semibold text-black bg-blue-100 px-4 py-1 rounded-lg">
                   {job.postedAgo}
                 </span>

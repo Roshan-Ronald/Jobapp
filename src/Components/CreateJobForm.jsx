@@ -35,10 +35,9 @@ export default function CreateJobForm() {
   }, [values, setSavedForm]);
 
   const onSubmit = (data) => {
-    // Create job object
     const newJob = {
       id: Date.now(),
-      companyLogo: "/default-logo.png",
+      companyLogo: "/logo.jpeg",
       company: data.companyName,
       jobTitle: data.jobTitle,
       postedAgo: "Just now",
@@ -50,17 +49,12 @@ export default function CreateJobForm() {
       details: [data.description],
     };
 
-    // Save job to localStorage
     const storedJobs = JSON.parse(localStorage.getItem("jobList")) || [];
     storedJobs.push(newJob);
     localStorage.setItem("jobList", JSON.stringify(storedJobs));
 
-    console.log("Form submitted:", newJob);
-
     reset();
     localStorage.removeItem("createJobForm");
-
-    // Dispatch event so JobBoard updates immediately
     window.dispatchEvent(new Event("storage"));
   };
 
@@ -74,7 +68,6 @@ export default function CreateJobForm() {
         <h2 className="font-semibold text-xl">Create Job Opening</h2>
       </div>
 
-      {/* Job Title & Company */}
       <div className="grid grid-cols-2 gap-4 mb-3">
         <div>
           <label className="block mb-2 text-sm">Job Title</label>
@@ -94,7 +87,6 @@ export default function CreateJobForm() {
         </div>
       </div>
 
-      {/* Location & Type */}
       <div className="grid grid-cols-2 gap-4 mb-3">
         <div>
           <label className="block mb-2 text-sm">Location</label>
@@ -112,7 +104,6 @@ export default function CreateJobForm() {
         </div>
       </div>
 
-      {/* Salary & Deadline */}
       <div className="grid grid-cols-2 gap-4 mb-3">
         <div>
           <label className="block mb-2 text-sm">Salary Range</label>
@@ -127,7 +118,6 @@ export default function CreateJobForm() {
         </div>
       </div>
 
-      {/* Description */}
       <div className="mb-6">
         <label className="block mb-2 text-sm">Description</label>
         <textarea {...register("description", { required: true })} rows={3} className="w-full border rounded-md px-3 py-2 bg-gray-50 resize-none" />
