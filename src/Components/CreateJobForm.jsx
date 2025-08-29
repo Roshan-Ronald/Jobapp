@@ -92,14 +92,22 @@ export default function CreateJobForm() {
           <label className="block mb-2 text-sm">Location</label>
           <select {...register("location", { required: true })} className="w-full border rounded-md px-3 py-2 bg-gray-50">
             <option value="">Choose</option>
-            {indianCities.map((city) => <option key={city} value={city}>{city}</option>)}
+            {indianCities.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
           </select>
         </div>
         <div>
           <label className="block mb-2 text-sm">Job Type</label>
           <select {...register("jobType", { required: true })} className="w-full border rounded-md px-3 py-2 bg-gray-50">
             <option value="">Choose</option>
-            {jobTypes.map((type) => <option key={type} value={type}>{type}</option>)}
+            {jobTypes.map((type) => (
+              <option key={type} value={type}>
+                {type}
+              </option>
+            ))}
           </select>
         </div>
       </div>
@@ -128,7 +136,10 @@ export default function CreateJobForm() {
       <div className="flex justify-between items-center mt-6">
         <button
           type="button"
-          onClick={() => { reset(); localStorage.removeItem("createJobForm"); }}
+          onClick={() => {
+            reset();
+            localStorage.removeItem("createJobForm");
+          }}
           className="border border-gray-400 px-6 py-2 rounded-md bg-white"
         >
           Clear Draft
