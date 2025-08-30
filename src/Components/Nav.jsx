@@ -46,7 +46,10 @@ export default function NavBar({ onCreateJobClick }) {
           <a href="#" className="font-semibold text-gray-900 hover:text-purple-600">About us</a>
           <a href="#" className="font-semibold text-gray-900 hover:text-purple-600">Testimonials</a>
           <button
-            onClick={onCreateJobClick}
+            onClick={() => {
+              onCreateJobClick();
+              setIsOpen(false);
+            }}
             className="bg-purple-700 hover:bg-purple-800 transition-colors text-white font-semibold text-base rounded-full px-6 py-2 shadow-lg w-full"
           >
             Create Jobs

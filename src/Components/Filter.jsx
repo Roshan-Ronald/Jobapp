@@ -4,7 +4,10 @@ import { PiUserSoundThin } from "react-icons/pi";
 import { Range } from "react-range";
 
 const Filter = ({ setFilter }) => {
-  const [values, setValues] = useState([10000, 120000]);
+  const MIN = 10000;
+  const MAX = 200000;
+
+  const [values, setValues] = useState([MIN, MAX]);
   const [searchTitle, setSearchTitle] = useState("");
   const [searchLocation, setSearchLocation] = useState("");
   const [jobType, setJobType] = useState("");
@@ -14,19 +17,26 @@ const Filter = ({ setFilter }) => {
       searchTitle,
       searchLocation,
       jobType,
-      salaryRange: values,
+      salaryRange: null,
     });
-  }, [searchTitle, searchLocation, jobType, values, setFilter]);
+  }, [searchTitle, searchLocation, jobType, setFilter]);
 
-  const min = 10000;
-  const max = 200000;
+  const onRangeChange = (vals) => {
+    setValues(vals);
+    setFilter({
+      searchTitle,
+      searchLocation,
+      jobType,
+      salaryRange: vals,
+    });
+  };
 
   const getTrackBackground = () =>
     `linear-gradient(to right, #d1d5db 0%, #d1d5db ${
-      ((values[0] - min) / (max - min)) * 100
-    }%, #000 ${(values[0] - min) / (max - min) * 100}%, #000 ${
-      ((values[1] - min) / (max - min)) * 100
-    }%, #d1d5db ${((values[1] - min) / (max - min)) * 100}%, #d1d5db 100%)`;
+      ((values[0] - MIN) / (MAX - MIN)) * 100
+    }%, #000 ${(values[0] - MIN) / (MAX - MIN) * 100}%, #000 ${
+      ((values[1] - MIN) / (MAX - MIN)) * 100
+    }%, #d1d5db ${((values[1] - MIN) / (MAX - MIN)) * 100}%, #d1d5db 100%)`;
 
   return (
     <div className="flex flex-col px-10 md:flex-row text-[#686868] py-6 md:py-8 justify-between items-stretch md:items-center gap-6 md:gap-4">
@@ -83,10 +93,10 @@ const Filter = ({ setFilter }) => {
         </div>
         <Range
           step={1000}
-          min={min}
-          max={max}
+          min={MIN}
+          max={MAX}
           values={values}
-          onChange={(vals) => setValues(vals)}
+          onChange={onRangeChange}
           renderTrack={({ props, children }) => (
             <div
               {...props}
